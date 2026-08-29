@@ -226,5 +226,6 @@ pip-log.txt
 
 HelpProject/output
 WinUSBNet/*.nupkg
+artifacts/
 
 /.idea
