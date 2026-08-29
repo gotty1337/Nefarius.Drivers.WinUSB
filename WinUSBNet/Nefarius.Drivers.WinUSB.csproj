@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>net6.0-windows;net7.0-windows;net8.0-windows;net472-windows;net48-windows</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0;net6.0-windows;net7.0-windows;net8.0-windows;net10.0-windows;net472-windows;net48-windows</TargetFrameworks>
         <RootNamespace>Nefarius.Drivers.WinUSB</RootNamespace>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <PackageTags>WinUSB USB</PackageTags>
@@ -9,7 +9,10 @@
         <PackageId>Nefarius.Drivers.WinUSB</PackageId>
         <IsPackable>true</IsPackable>
         <RepositoryUrl>https://github.com/nefarius/Nefarius.Drivers.WinUSB</RepositoryUrl>
-        <Description>WinUSBNet is a .NET class library that provides easy access to the WinUSB API from C#, VB.NET and other .NET languages.</Description>
+        <Description>WinUSBNet is a .NET class library that provides easy access to the WinUSB API from C#, VB.NET and other .NET languages. Runtime support is Windows-only.</Description>
+        <EnableWindowsTargeting>true</EnableWindowsTargeting>
+        <EnablePackageValidation>true</EnablePackageValidation>
+        <PackageValidationBaselineVersion>5.3.0</PackageValidationBaselineVersion>
         <Platforms>AnyCPU;x64;x86</Platforms>
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
@@ -38,6 +41,9 @@
     </ItemGroup>
     
     <ItemGroup>        
+        <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3">
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
         <PackageReference Include="MinVer" Version="7.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

@@ -17,7 +17,13 @@ jobs:
       - name: Setup .Net SDK
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 9.x
+          dotnet-version: 10.x
 
-      - name: Build
-        run: dotnet build -c Release
+      - name: Build and pack
+        run: |
+          dotnet build Nefarius.Drivers.WinUSB.sln -c Release /p:MinVerVersionOverride=5.3.1-local
+          mkdir -p artifacts/packages
+          cp bin/Nefarius.Drivers.WinUSB.5.3.1-local.nupkg artifacts/packages/
+
+      - name: Build package consumers
+        run: dotnet build tests/PackageCompatibility/PackageCompatibility.csproj -c Release
