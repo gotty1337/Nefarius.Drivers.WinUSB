@@ -7,6 +7,14 @@
         <RestorePackagesPath>$(MSBuildThisFileDirectory)../../artifacts/nuget-cache</RestorePackagesPath>
     </PropertyGroup>
 
+    <PropertyGroup Condition="'$(TargetFramework)' == 'net10.0'">
+        <OutputType>Exe</OutputType>
+    </PropertyGroup>
+
+    <Target Name="AssertSelectedPackageAssets" AfterTargets="Build" Condition="'$(TargetFramework)' == 'net10.0'">
+        <Exec Command="dotnet exec &quot;$(TargetPath)&quot; &quot;$(MSBuildProjectDirectory)/obj/project.assets.json&quot;" />
+    </Target>
+
     <ItemGroup>
         <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3">
             <PrivateAssets>all</PrivateAssets>
